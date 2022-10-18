@@ -1,0 +1,20 @@
+{
+  "name": "auth2",
+  "version": "1.0.0",
+  "description": "My JWT Authentication (and Authorization) exercise using node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/biayo/auth2.git"
+  },
+  "keywords": [],
+  "author": "Maximiliano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/biayo/auth2/issues"
+  },
+  "homepage": "https://github.com/biayo/auth2#readme"
+}
