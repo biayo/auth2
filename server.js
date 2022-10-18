@@ -30,16 +30,37 @@ app.post('/users', async (req, res) => {
         const password = await bcrypt.hash(req.body.password, salt)
 
         // create user
-        const user = { name: req.body.name, password: password }
+        const user = {
+            name: req.body.name,
+            username: req.body.username,
+            password: password
+        }
 
         // hash password
         // persist user
         users.push(user)
+
+        res.status(201).send()
     } catch (error) {
         res.status(500).send()
     }
+})
 
-    res.status(201).send()
+app.post('/login', async (req, res) => {
+    const found = users.find(user => user.username === req.body.username)
+    if (found == null) {
+        return res.status(404).send()
+    }
+
+    try {
+        if (await bcrypt.compare(req.body.password, found.password)) {
+            return res.status(200).send()
+        } else {
+            res.status(401).send()
+        }
+    } catch (error) {
+        res.status(500).send()
+    }
 })
 
 const PORT = parseInt(process.env.PORT) || 3000
